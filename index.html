@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <script src="app.js" defer></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="main__header">
+        <h1>Password Generator</h1>
+      </header>
+      <div class="generated-password-field">
+        <p id="password"></p>
+        <button type="button">
+          <img src="/assets/images/icon-copy.svg" alt="Password copy image" />
+        </button>
+      </div>
+      <div class="field__choices">
+        <form novalidate>
+          <div class="character__length">
+            <p>Character Length</p>
+            <p id="character-range">10</p>
+          </div>
+          <input type="range" min="0" max="20" id="character-length" />
+          <div class="checkboxes">
+            <input type="checkbox" /> Include Uppercase Letters
+            <input type="checkbox" /> Include Lowercase Letters
+            <input type="checkbox" /> Include Numbers
+            <input type="checkbox" /> Include Symbols
+          </div>
+          <div class="password__strength">
+            <p>Strength</p>
+            <div class="strength">
+              <p>Medium</p>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="submit__button">
+            <input type="button" value="GENERATE" />
+            <img
+              src="/assets/images/icon-arrow-right.svg"
+              alt="Arrow pointing right"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
