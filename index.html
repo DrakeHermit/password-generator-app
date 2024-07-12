@@ -18,33 +18,73 @@
     <title>Frontend Mentor | Password generator app</title>
   </head>
   <body>
+    <header class="main__header">
+      <h1>Password Generator</h1>
+    </header>
+    <div class="generated-password-field">
+      <p id="password" class="font-size inactive">PTx1f5DaFX</p>
+      <button type="button">
+        <img src="/assets/images/icon-copy.svg" alt="Password copy image" />
+      </button>
+    </div>
     <div class="container">
-      <header class="main__header">
-        <h1>Password Generator</h1>
-      </header>
-      <div class="generated-password-field">
-        <p id="password"></p>
-        <button type="button">
-          <img src="/assets/images/icon-copy.svg" alt="Password copy image" />
-        </button>
-      </div>
       <div class="field__choices">
         <form novalidate>
           <div class="character__length">
             <p>Character Length</p>
-            <p id="character-range">10</p>
+            <p id="character-range" class="green-color font-size">10</p>
           </div>
-          <input type="range" min="0" max="20" id="character-length" />
+          <div class="slider__container">
+            <input
+              type="range"
+              min="0"
+              max="20"
+              id="character-length"
+              class="custom-slider"
+            />
+          </div>
           <div class="checkboxes">
-            <input type="checkbox" /> Include Uppercase Letters
-            <input type="checkbox" /> Include Lowercase Letters
-            <input type="checkbox" /> Include Numbers
-            <input type="checkbox" /> Include Symbols
+            <label for="uppercase"
+              ><input
+                type="checkbox"
+                id="uppercase"
+                name="uppercase"
+                class="custom-checkbox"
+              />
+              Include Uppercase Letters</label
+            >
+            <label for="lowercase"
+              ><input
+                type="checkbox"
+                name="lowercase"
+                id="lowercase"
+                class="custom-checkbox"
+              />
+              Include Lowercase Letters</label
+            >
+            <label for="numbers"
+              ><input
+                type="checkbox"
+                id="numbers"
+                name="numbers"
+                class="custom-checkbox"
+              />
+              Include Numbers</label
+            >
+            <label for="symbols"
+              ><input
+                type="checkbox"
+                id="symbols"
+                name="symbols"
+                class="custom-checkbox"
+              />
+              Include Symbols</label
+            >
           </div>
           <div class="password__strength">
-            <p>Strength</p>
+            <h2>Strength</h2>
             <div class="strength">
-              <p>Medium</p>
+              <p id="password-strength">Medium</p>
               <div></div>
               <div></div>
               <div></div>
@@ -52,11 +92,13 @@
             </div>
           </div>
           <div class="submit__button">
-            <input type="button" value="GENERATE" />
-            <img
-              src="/assets/images/icon-arrow-right.svg"
-              alt="Arrow pointing right"
-            />
+            <button type="button">
+              Generate
+              <img
+                src="/assets/images/icon-arrow-right.svg"
+                alt="Arrow pointing right"
+              />
+            </button>
           </div>
         </form>
       </div>

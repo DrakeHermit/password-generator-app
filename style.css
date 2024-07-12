@@ -1,5 +1,14 @@
+@font-face {
+  font-family: JetBrainsMono;
+  src: url(/assets/fonts/JetBrainsMono-VariableFont_wght.ttf);
+}
+
 :root {
   --background-color: #18171F;
+  --card-bg-color: #24232C;
+  --text-color: #E6E5EA;
+  --heading-color: #817D92;
+  --accent-color: #A4FFAF;
 }
 
 * {
@@ -10,8 +19,134 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   min-height: 100vh;
   align-items: center;
   background-color: var(--background-color);
+  font-family: JetBrainsMono;
 }
+
+h1, h2 {
+  font-size: 16px;
+  color: var(--heading-color);
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+input, p, label {
+  color: var(--text-color);
+  accent-color: var(--accent-color);
+  font-size: 18px;
+}
+
+.custom-checkbox {
+  background: var(--card-bg-color);
+  width: 20px;
+  height: 20px;
+}
+
+.main__header {
+  margin-bottom: 1rem;
+}
+
+.generated-password-field {
+  margin-bottom: 1rem;
+  background-color: var(--card-bg-color);
+  width: 343px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  button {
+    background-color: inherit;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 17.5px;
+      height: 20px;      
+    }
+  }
+}
+
+.container {
+  max-width: 343px;
+  padding: 1rem;
+  background-color: var(--card-bg-color);
+}
+
+.character__length {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.password__strength {
+  margin: 2rem 0 1rem 0;
+  background-color: var(--background-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    text-transform: uppercase;
+  }
+}
+
+.submit__button button {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  width: 100%;
+  padding: 1.16rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--accent-color);
+
+  &:hover {
+    background-color: var(--card-bg-color);
+    color: var(--accent-color);
+  }
+
+  img {
+    padding-left: 1rem;
+  }
+
+}
+
+
+.slider__container {
+  margin-bottom: 2rem;
+
+  input[type = 'range'] {
+    width: 100%;
+  }
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Utilities */
+.green-color {
+  color: var(--accent-color);
+}
+
+.font-size {
+  font-size: 24px;
+}
+
+.inactive {
+  color: var(--heading-color);
+}
+
+
