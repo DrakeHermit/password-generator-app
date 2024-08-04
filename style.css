@@ -38,7 +38,6 @@ h2 {
 
 input, p, label {
   color: var(--text-color);
-  accent-color: var(--accent-color);
   font-size: 16px;
 }
 
@@ -159,6 +158,43 @@ input, p, label {
   img {
     opacity: 1;
   }
+}
+
+.custom-slider {
+  appearance: none;
+  background: linear-gradient(90deg ,var(--background-color) , var(--background-color) );
+  height: 8px;
+  background-color: var(--background-color);
+}
+
+.custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+}
+
+.custom-slider::-moz-range-thumb {
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+.custom-slider::-moz-range-thumb:hover {
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
 }
 
 /* Utilities */
