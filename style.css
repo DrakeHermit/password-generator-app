@@ -102,18 +102,21 @@ input, p, label {
   cursor: pointer;
   outline: none;
   border: 1px solid var(--accent-color);
+  transition: all 0.2s ease-in;
+
+  svg {
+    margin-left: 1.5rem; 
+  }
 
   &:hover {
     background-color: var(--card-bg-color);
     color: var(--accent-color);
-  }
 
-  img {
-    padding-left: 1rem;
+    .arrow {
+      fill: var(--accent-color); 
+    }
   }
-
 }
-
 
 .slider__container {
   margin-bottom: 2rem;
