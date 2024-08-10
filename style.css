@@ -9,6 +9,9 @@
   --text-color: #E6E5EA;
   --heading-color: #817D92;
   --accent-color: #A4FFAF;
+  --too-weak: #F64A4A;
+  --weak: #FB7C58;
+  --medium: #F8CD65;
 }
 
 * {
@@ -98,14 +101,14 @@ input, p, label {
   width: 100%;
   padding: 1.16rem;
   text-transform: uppercase;
-  font-weight: bolder;
+  font-weight: 700;
   cursor: pointer;
   outline: none;
   border: 1px solid var(--accent-color);
   transition: all 0.2s ease-in;
 
   svg {
-    margin-left: 1.5rem; 
+    margin-left: 1rem; 
   }
 
   &:hover {
@@ -200,6 +203,24 @@ input, p, label {
   border: 1px solid var(--accent-color);
 }
 
+.strength {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar {
+  width: 10px;
+  height: 28px;
+  background-color: var(--background-color);
+  border: 2px solid var(--text-color);
+}
+
+.bars {
+  display: flex;
+  gap: 0.5rem;
+}
+
 /* Utilities */
 .green-color {
   color: var(--accent-color);
@@ -211,6 +232,26 @@ input, p, label {
 
 .inactive {
   color: var(--heading-color);
+}
+
+.too-weak {
+  background-color: var(--too-weak);
+  border: none;
+}
+
+.weak {
+  background-color: var(--weak);
+  border: none;
+}
+
+.medium {
+  background-color: var(--medium);
+  border: none;
+}
+
+.strong {
+  background-color: var(--accent-color);
+  border: none;
 }
 
 @media (width >= 762px) {
