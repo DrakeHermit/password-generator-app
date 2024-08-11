@@ -95,7 +95,7 @@ input, p, label {
   }
 }
 
-.submit__button button {
+.btn {
   background-color: var(--accent-color);
   color: var(--background-color);
   width: 100%;
@@ -110,14 +110,16 @@ input, p, label {
   svg {
     margin-left: 1rem; 
   }
+}
 
-  &:hover {
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
     background-color: var(--card-bg-color);
     color: var(--accent-color);
 
     .arrow {
       fill: var(--accent-color); 
-    }
+  }
   }
 }
 
