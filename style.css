@@ -112,6 +112,10 @@ input, p, label {
   }
 }
 
+.copy-button {
+  transition: all 0.3s ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .btn:hover {
     background-color: var(--card-bg-color);
@@ -120,6 +124,10 @@ input, p, label {
     .arrow {
       fill: var(--accent-color); 
   }
+  }
+
+  .copy-button:hover {
+    fill: var(--text-color);
   }
 }
 
@@ -233,6 +241,12 @@ input, p, label {
 }
 
 .inactive {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+input[type = 'text']:disabled::placeholder {
   color: var(--heading-color);
 }
 

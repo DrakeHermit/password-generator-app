@@ -9,6 +9,7 @@ const passwordStrengthIndicatorEl = document.getElementById(
   "password-strength-indicator"
 );
 const passwordField = document.getElementById("password");
+const copyButtonEl = document.getElementById("copy-button");
 
 sliderValueDisplay.innerText = slider.value;
 
@@ -128,14 +129,25 @@ const randomCharacters = (passwordLength, checkedCheckbox) => {
 
 const updatePasswordDisplay = (string) => {
   if (string !== "") {
-    passwordField.innerText = string;
+    passwordField.value = string;
   } else {
-    passwordField.innerText = "Select character length";
+    passwordField.value = "Select character length";
     passwordField.style.fontSize = "18px";
   }
   if (passwordField.classList.contains("inactive")) {
     passwordField.style.color = "#fff";
+    passwordField.style.fontSize = "32px";
   }
+};
+
+const copyToClipboard = async () => {
+  if (passwordField.value !== "") {
+    passwordField.select();
+    passwordField.setSelectionRange(0, 99999);
+  }
+
+  try {
+  } catch (error) {}
 };
 
 submitBtn.addEventListener("click", (e) => {
@@ -161,3 +173,5 @@ slider.addEventListener("input", () => {
   }%)`;
   slider.style.background = sliderGradient;
 });
+
+copyButtonEl.addEventListener("click", copyToClipboard);
