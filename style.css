@@ -270,6 +270,17 @@ input[type = 'text']:disabled::placeholder {
   border: none;
 }
 
+.alert {
+  color: var(--accent-color);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 @media (width >= 762px) {
   .field__choices {
     min-width: 540px;

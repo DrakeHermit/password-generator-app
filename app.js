@@ -10,6 +10,9 @@ const passwordStrengthIndicatorEl = document.getElementById(
 );
 const passwordField = document.getElementById("password");
 const copyButtonEl = document.getElementById("copy-button");
+const copyAlert = document.querySelector(".alert");
+
+copyAlert.style.display = "none";
 
 sliderValueDisplay.innerText = slider.value;
 
@@ -144,10 +147,15 @@ const copyToClipboard = async () => {
   if (passwordField.value !== "") {
     passwordField.select();
     passwordField.setSelectionRange(0, 99999);
+
+    try {
+      await navigator.clipboard.writeText(passwordField.value);
+    } catch (error) {
+      console.log("There was an error copying the password", error);
+    }
   }
 
-  try {
-  } catch (error) {}
+  copyAlert.style.display = "block";
 };
 
 submitBtn.addEventListener("click", (e) => {
@@ -168,9 +176,7 @@ slider.addEventListener("input", () => {
   sliderValueDisplay.innerText = currentSliderValue;
 
   let sliderPosition = (currentSliderValue / maxSliderValue) * 100;
-  let sliderGradient = `linear-gradient(90deg ,var(--accent-color) ${sliderPosition}%, var(--background-color) ${
-    sliderPosition + 1
-  }%)`;
+  let sliderGradient = `linear-gradient(90deg ,var(--accent-color) ${sliderPosition}%, var(--background-color) ${sliderPosition}%)`;
   slider.style.background = sliderGradient;
 });
 
