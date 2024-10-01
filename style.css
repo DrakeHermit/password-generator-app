@@ -274,6 +274,10 @@ input[type = 'text']:disabled::placeholder {
   color: var(--accent-color);
 }
 
+.copy-btn {
+  cursor: pointer;
+}
+
 .btn-group {
   display: flex;
   align-items: center;

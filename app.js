@@ -156,6 +156,10 @@ const copyToClipboard = async () => {
   }
 
   copyAlert.style.display = "block";
+
+  setTimeout(() => {
+    copyAlert.style.display = "none";
+  }, 2000);
 };
 
 submitBtn.addEventListener("click", (e) => {
