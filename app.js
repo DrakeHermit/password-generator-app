@@ -93,14 +93,19 @@ const randomCharacters = (passwordLength, checkedCheckbox) => {
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
   const numbers = "0123456789";
   const symbols = "@!%$&*/?#$^,.|";
-  const randomCharacters = [];
+  let randomCharacters = {};
 
   if (checkedCheckbox.includes("uppercase")) {
     for (i = 1; i <= passwordLength; i++) {
       const randomUppercaseLetters = uppercaseLetters.charAt(
         Math.floor(Math.random() * uppercaseLetters.length)
       );
-      randomCharacters.push(randomUppercaseLetters);
+      randomCharacters = {
+        "checked-checkbox": checkedCheckbox,
+        type: [...randomUppercaseLetters],
+      };
+
+      console.log(randomCharacters.type.join(""));
     }
   } else if (checkedCheckbox.includes("lowercase")) {
     for (i = 1; i <= passwordLength; i++) {
@@ -125,7 +130,9 @@ const randomCharacters = (passwordLength, checkedCheckbox) => {
     }
   }
 
-  const randomLettersStr = randomCharacters.join("");
+  const randomLettersStr = randomCharacters;
+
+  console.log(randomCharacters);
 
   return randomLettersStr;
 };
