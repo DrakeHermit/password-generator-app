@@ -88,53 +88,47 @@ const applyBarColoring = (bars, numColoredBars, strengthClass) => {
   }
 };
 
-const randomCharacters = (passwordLength, checkedCheckbox) => {
-  const uppercaseLetters = "ABCDEFHIJKLMNOPQRSTUVWXYZ";
-  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
-  const numbers = "0123456789";
-  const symbols = "@!%$&*/?#$^,.|";
-  let randomCharacters = {};
+const randomCharacters = (passwordLength) => {
+  const characterOptions = {
+    uppercase: "ABCDEFHIJKLMNOPQRSTUVWXYZ",
+    lowercase: "abcdefghijklmnopqrstuvwxyz",
+    numbers: "0123456789",
+    symbols: "@!%$&*/?#$^,.|",
+  };
+  const randomCharacters = {
+    "random uppercase": [],
+    "random lowercase": [],
+    "random numbers": [],
+    "random symbols": [],
+  };
 
-  if (checkedCheckbox.includes("uppercase")) {
-    for (i = 1; i <= passwordLength; i++) {
-      const randomUppercaseLetters = uppercaseLetters.charAt(
-        Math.floor(Math.random() * uppercaseLetters.length)
-      );
-      randomCharacters = {
-        "checked-checkbox": checkedCheckbox,
-        type: [...randomUppercaseLetters],
-      };
-
-      console.log(randomCharacters.type.join(""));
-    }
-  } else if (checkedCheckbox.includes("lowercase")) {
-    for (i = 1; i <= passwordLength; i++) {
-      const randomLowercaseLetters = lowercaseLetters.charAt(
-        Math.floor(Math.random() * lowercaseLetters.length)
-      );
-      randomCharacters.push(randomLowercaseLetters);
-    }
-  } else if (checkedCheckbox.includes("numbers")) {
-    for (i = 1; i <= passwordLength; i++) {
-      const randomNumbers = numbers.charAt(
-        Math.floor(Math.random() * numbers.length)
-      );
-      randomCharacters.push(randomNumbers);
-    }
-  } else if (checkedCheckbox.includes("symbols")) {
-    for (i = 1; i <= passwordLength; i++) {
-      const randomSymbols = symbols.charAt(
-        Math.floor(Math.random() * symbols.length)
-      );
-      randomCharacters.push(randomSymbols);
-    }
+  for (let i = 0; i < passwordLength; i++) {
+    const randomUppercase = characterOptions.uppercase.charAt(
+      Math.floor(Math.random() * passwordLength)
+    );
+    randomCharacters["random uppercase"].push(randomUppercase);
   }
 
-  const randomLettersStr = randomCharacters;
+  for (let i = 0; i < passwordLength; i++) {
+    const randomLowercase = characterOptions.lowercase.charAt(
+      Math.floor(Math.random() * passwordLength)
+    );
+    randomCharacters["random lowercase"].push(randomLowercase);
+  }
 
-  console.log(randomCharacters);
+  for (let i = 0; i < passwordLength; i++) {
+    const randomNumbers = characterOptions.numbers.charAt(
+      Math.floor(Math.random() * passwordLength)
+    );
+    randomCharacters["random numbers"].push(randomNumbers);
+  }
 
-  return randomLettersStr;
+  for (let i = 0; i < passwordLength; i++) {
+    const randomSymbols = characterOptions.symbols.charAt(
+      Math.floor(Math.random() * passwordLength)
+    );
+    randomCharacters["random symbols"].push(randomSymbols);
+  }
 };
 
 const updatePasswordDisplay = (string) => {
@@ -187,7 +181,7 @@ slider.addEventListener("input", () => {
   sliderValueDisplay.innerText = currentSliderValue;
 
   let sliderPosition = (currentSliderValue / maxSliderValue) * 100;
-  let sliderGradient = `linear-gradient(90deg ,var(--accent-color) ${sliderPosition}%, var(--background-color) ${sliderPosition}%)`;
+  let sliderGradient = `linear-gradient(to right ,var(--accent-color) ${sliderPosition}%, var(--background-color) ${sliderPosition}%)`;
   slider.style.background = sliderGradient;
 });
 
