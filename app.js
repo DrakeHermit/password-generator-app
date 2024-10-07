@@ -88,13 +88,43 @@ const applyBarColoring = (bars, numColoredBars, strengthClass) => {
   }
 };
 
-const randomCharacters = (passwordLength) => {
+const generateRandomCharacters = (charLength, selection) => {
   const characterOptions = {
     uppercase: "ABCDEFHIJKLMNOPQRSTUVWXYZ",
     lowercase: "abcdefghijklmnopqrstuvwxyz",
     numbers: "0123456789",
     symbols: "@!%$&*/?#$^,.|",
   };
+
+  const characterSelection = [];
+  const characterSelectionObj = {};
+
+  if (selection.length === 1) {
+    Object.entries(characterOptions).forEach(([key, value]) => {
+      if (selection.includes(key)) {
+        for (let i = 0; i < charLength; i++) {
+          const random = value.charAt(Math.floor(Math.random() * value.length));
+          characterSelection.push(random);
+        }
+      }
+    });
+  } else {
+    Object.entries(characterOptions).forEach(([key, value]) => {
+      if (selection.includes(key)) {
+        for (let i = 0; i < charLength; i++) {
+          const random = value.charAt(Math.floor(Math.random() * value.length));
+          if (!characterSelectionObj[key]) {
+            characterSelectionObj[key] = [];
+          }
+          characterSelectionObj[key].push(random);
+        }
+      }
+    });
+  }
+  console.log(characterSelectionObj);
+};
+
+const randomCharacters = (passwordLength) => {
   const randomCharacters = {
     "random uppercase": [],
     "random lowercase": [],
@@ -170,8 +200,8 @@ submitBtn.addEventListener("click", (e) => {
 
   passwordStrengthVisualiziation(passwordStrengthValue);
 
-  let password = randomCharacters(passwordStrengthValue, checkedCheckboxes);
-  updatePasswordDisplay(password);
+  generateRandomCharacters(passwordStrengthValue, checkedCheckboxes);
+  // updatePasswordDisplay(password);
 });
 
 slider.addEventListener("input", () => {
