@@ -121,7 +121,8 @@ const generateRandomCharacters = (charLength, selection) => {
       }
     });
   }
-  console.log(characterSelectionObj);
+  const characterSelectionStr = characterSelection.join("");
+  return { characterSelectionStr, characterSelectionObj };
 };
 
 const randomCharacters = (passwordLength) => {
@@ -200,8 +201,11 @@ submitBtn.addEventListener("click", (e) => {
 
   passwordStrengthVisualiziation(passwordStrengthValue);
 
-  generateRandomCharacters(passwordStrengthValue, checkedCheckboxes);
-  // updatePasswordDisplay(password);
+  const {
+    characterSelectionStr,
+    characterSelectionObj,
+  } = generateRandomCharacters(passwordStrengthValue, checkedCheckboxes);
+  updatePasswordDisplay(characterSelectionStr);
 });
 
 slider.addEventListener("input", () => {
