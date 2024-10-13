@@ -96,70 +96,46 @@ const generateRandomCharacters = (charLength, selection) => {
     symbols: "@!%$&*/?#$^,.|",
   };
 
-  const characterSelection = [];
   const characterSelectionObj = {};
 
-  if (selection.length === 1) {
-    Object.entries(characterOptions).forEach(([key, value]) => {
-      if (selection.includes(key)) {
-        for (let i = 0; i < charLength; i++) {
-          const random = value.charAt(Math.floor(Math.random() * value.length));
-          characterSelection.push(random);
-        }
+  Object.entries(characterOptions).forEach(([key, value]) => {
+    if (selection.includes(key)) {
+      characterSelectionObj[key] = [];
+      for (let i = 0; i < charLength; i++) {
+        const random = value.charAt(Math.floor(Math.random() * value.length));
+        characterSelectionObj[key].push(random);
       }
-    });
+    }
+  });
+
+  // Check if it's a single selection after populating characterSelectionObj
+  if (Object.keys(characterSelectionObj).length === 1) {
+    const singleKey = Object.keys(characterSelectionObj);
+    return { singleSelection: characterSelectionObj[singleKey].join("") };
   } else {
-    Object.entries(characterOptions).forEach(([key, value]) => {
-      if (selection.includes(key)) {
-        for (let i = 0; i < charLength; i++) {
-          const random = value.charAt(Math.floor(Math.random() * value.length));
-          if (!characterSelectionObj[key]) {
-            characterSelectionObj[key] = [];
-          }
-          characterSelectionObj[key].push(random);
-        }
-      }
-    });
+    return { multipleSelection: characterSelectionObj };
   }
-  const characterSelectionStr = characterSelection.join("");
-  return { characterSelectionStr, characterSelectionObj };
 };
 
-const randomCharacters = (passwordLength) => {
-  const randomCharacters = {
-    "random uppercase": [],
-    "random lowercase": [],
-    "random numbers": [],
-    "random symbols": [],
-  };
+const combinePasswords = (passwordStrength, object) => {
+  const keys = Object.values(object.multipleSelection);
 
-  for (let i = 0; i < passwordLength; i++) {
-    const randomUppercase = characterOptions.uppercase.charAt(
-      Math.floor(Math.random() * passwordLength)
-    );
-    randomCharacters["random uppercase"].push(randomUppercase);
-  }
+  const combinedArray = [];
+  const splicedArray = [];
+  keys.forEach((key) => {
+    combinedArray.push(key);
+  });
 
-  for (let i = 0; i < passwordLength; i++) {
-    const randomLowercase = characterOptions.lowercase.charAt(
-      Math.floor(Math.random() * passwordLength)
-    );
-    randomCharacters["random lowercase"].push(randomLowercase);
-  }
+  combinedArray.map((value) => {
+    const valuesToSplice = passwordStrength / 3;
+    // console.log(value);
+    const splicedValues = value.splice(1, valuesToSplice);
+    splicedArray.push(splicedValues);
+  });
 
-  for (let i = 0; i < passwordLength; i++) {
-    const randomNumbers = characterOptions.numbers.charAt(
-      Math.floor(Math.random() * passwordLength)
-    );
-    randomCharacters["random numbers"].push(randomNumbers);
-  }
+  const passwordString = splicedArray.flat().join("");
 
-  for (let i = 0; i < passwordLength; i++) {
-    const randomSymbols = characterOptions.symbols.charAt(
-      Math.floor(Math.random() * passwordLength)
-    );
-    randomCharacters["random symbols"].push(randomSymbols);
-  }
+  return passwordString;
 };
 
 const updatePasswordDisplay = (string) => {
@@ -201,11 +177,17 @@ submitBtn.addEventListener("click", (e) => {
 
   passwordStrengthVisualiziation(passwordStrengthValue);
 
-  const {
-    characterSelectionStr,
-    characterSelectionObj,
-  } = generateRandomCharacters(passwordStrengthValue, checkedCheckboxes);
-  updatePasswordDisplay(characterSelectionStr);
+  const value = generateRandomCharacters(
+    passwordStrengthValue,
+    checkedCheckboxes
+  );
+
+  if (value.singleSelection) {
+    updatePasswordDisplay(value.singleSelection);
+  } else {
+    const multiple = combinePasswords(passwordStrengthValue, value);
+    updatePasswordDisplay(multiple);
+  }
 });
 
 slider.addEventListener("input", () => {
