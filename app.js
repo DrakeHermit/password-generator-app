@@ -93,7 +93,7 @@ const generateRandomCharacters = (charLength, selection) => {
     uppercase: "ABCDEFHIJKLMNOPQRSTUVWXYZ",
     lowercase: "abcdefghijklmnopqrstuvwxyz",
     numbers: "0123456789",
-    symbols: "@!%$&*/?#$^,.|",
+    symbols: "@!%$&*?#$^",
   };
 
   const characterSelectionObj = {};
@@ -128,15 +128,30 @@ const combinePasswords = (passwordStrength, object) => {
 
   combinedArray.map((value) => {
     const valuesToSplice = passwordStrength / 3;
-    // console.log(value);
     const splicedValues = value.splice(1, valuesToSplice);
     splicedArray.push(splicedValues);
   });
 
-  const passwordString = splicedArray.flat().join("");
+  const flattenedArray = splicedArray.flat();
+  const shuffle = shufflePassword(flattenedArray);
 
-  return passwordString;
+  const string = arrayToString(shuffle);
+
+  return string;
 };
+
+// prettier-ignore
+const shufflePassword = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+};
+
+const arrayToString = (array) => array.join("");
 
 const updatePasswordDisplay = (string) => {
   if (string !== "") {
@@ -147,7 +162,7 @@ const updatePasswordDisplay = (string) => {
   }
   if (passwordField.classList.contains("inactive")) {
     passwordField.style.color = "#fff";
-    passwordField.style.fontSize = "32px";
+    passwordField.style.fontSize = "30px";
   }
 };
 
