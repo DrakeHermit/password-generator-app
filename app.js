@@ -118,16 +118,24 @@ const generateRandomCharacters = (charLength, selection) => {
 };
 
 const combinePasswords = (passwordStrength, object) => {
-  const keys = Object.values(object.multipleSelection);
+  const values = Object.values(object.multipleSelection);
+  const keys = Object.keys(object.multipleSelection);
+  let spliceBy = keys.length;
+
+  if (passwordStrength % 2 === 1 && spliceBy % 2 === 0) {
+    spliceBy--;
+  }
 
   const combinedArray = [];
   const splicedArray = [];
-  keys.forEach((key) => {
+  values.forEach((key) => {
     combinedArray.push(key);
   });
 
+  console.log(spliceBy);
+
   combinedArray.map((value) => {
-    const valuesToSplice = passwordStrength / 3;
+    const valuesToSplice = passwordStrength / spliceBy;
     const splicedValues = value.splice(1, valuesToSplice);
     splicedArray.push(splicedValues);
   });
