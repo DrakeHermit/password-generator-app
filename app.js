@@ -122,10 +122,6 @@ const combinePasswords = (passwordStrength, object) => {
   const keys = Object.keys(object.multipleSelection);
   let spliceBy = keys.length;
 
-  if (passwordStrength % 2 === 1 && spliceBy % 2 === 0) {
-    spliceBy--;
-  }
-
   const combinedArray = [];
   const splicedArray = [];
   values.forEach((key) => {
