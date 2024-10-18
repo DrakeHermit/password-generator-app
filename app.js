@@ -119,24 +119,19 @@ const generateRandomCharacters = (charLength, selection) => {
 
 const combinePasswords = (passwordStrength, object) => {
   const values = Object.values(object.multipleSelection);
-  const keys = Object.keys(object.multipleSelection);
-  let spliceBy = keys.length;
 
-  const combinedArray = [];
-  const splicedArray = [];
-  values.forEach((key) => {
-    combinedArray.push(key);
+  const passwordArray = [];
+
+  const charsPerType = Math.floor(passwordStrength / values.length);
+  let remainingChars = passwordStrength % values.length;
+
+  values.forEach((value) => {
+    const types = value.slice(0, charsPerType + (remainingChars > 0 ? 1 : 0));
+    passwordArray.push(...types);
+    if (remainingChars > 0) remainingChars--;
   });
 
-  console.log(spliceBy);
-
-  combinedArray.map((value) => {
-    const valuesToSplice = passwordStrength / spliceBy;
-    const splicedValues = value.splice(1, valuesToSplice);
-    splicedArray.push(splicedValues);
-  });
-
-  const flattenedArray = splicedArray.flat();
+  const flattenedArray = passwordArray.flat();
   const shuffle = shufflePassword(flattenedArray);
 
   const string = arrayToString(shuffle);
@@ -166,7 +161,6 @@ const updatePasswordDisplay = (string) => {
   }
   if (passwordField.classList.contains("inactive")) {
     passwordField.style.color = "#fff";
-    passwordField.style.fontSize = "30px";
   }
 };
 

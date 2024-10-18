@@ -52,10 +52,13 @@ input, p, label {
   margin-bottom: 1rem;
   background-color: var(--card-bg-color);
   width: 343px;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   padding: 1rem;
 
+  input[type = 'text'] {
+    font-size: 20px;
+  }
   button {
     background-color: inherit;
     outline: none;
@@ -299,12 +302,14 @@ input[type = 'text']:disabled::placeholder {
     font-size: 24px;
   }
 
-  .xxl {
-    font-size: 32px;
+   input[type = 'text'] {
+    font-size: 28px !important;
   }
   
   .generated-password-field {
-    min-width: 540px;
+    display: grid;
+    grid-template-columns: 94% 1fr;
+    width: 540px;
     padding: 1.19rem 2rem;
   }
 
