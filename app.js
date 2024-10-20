@@ -12,8 +12,6 @@ const passwordField = document.getElementById("password");
 const copyButtonEl = document.getElementById("copy-button");
 const copyAlert = document.querySelector(".alert");
 
-copyAlert.style.display = "none";
-
 sliderValueDisplay.innerText = slider.value;
 
 const getFormData = () => {
@@ -176,10 +174,13 @@ const copyToClipboard = async () => {
     }
   }
 
-  copyAlert.style.display = "block";
+  copyAlert.style.visibility = "visible";
+  copyAlert.style.opacity = "1";
+  passwordField.value = "";
 
   setTimeout(() => {
-    copyAlert.style.display = "none";
+    copyAlert.style.visibility = "hidden";
+    copyAlert.style.opacity = "0";
   }, 2000);
 };
 
@@ -210,7 +211,9 @@ slider.addEventListener("input", () => {
   sliderValueDisplay.innerText = currentSliderValue;
 
   let sliderPosition = (currentSliderValue / maxSliderValue) * 100;
-  let sliderGradient = `linear-gradient(to right ,var(--accent-color) ${sliderPosition}%, var(--background-color) ${sliderPosition}%)`;
+  let sliderGradient = `linear-gradient(to right ,var(--accent-color) ${
+    sliderPosition - 2
+  }%, var(--background-color) ${sliderPosition}%)`;
   slider.style.background = sliderGradient;
 });
 

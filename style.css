@@ -284,8 +284,17 @@ input[type = 'text']:disabled::placeholder {
 .btn-group {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.alert {
+  position: absolute;
+  right: 100%;
+  opacity: 0;
+  visibility: none;
+  margin-right: 20px;
+  transition: all 0.2s ease-in;
 }
 
 @media (width >= 762px) {
