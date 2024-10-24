@@ -162,32 +162,7 @@ const updatePasswordDisplay = (string) => {
   }
 };
 
-const copyToClipboardFallback = (password) => {
-  const textArea = document.createElement("textarea");
-  textArea = password;
-  textArea.style.position = "fixed";
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  textArea.setSelectionRange(0, 99999);
-
-  try {
-    const successful = document.execCommand("copy");
-    const msg = successful ? "successful" : "unsuccessful";
-    console.log("Fallback: Copying text command was " + msg);
-  } catch (error) {
-    console.error("Fallback: Oops, unable to copy", err);
-  }
-
-  document.body.removeChild(textArea);
-};
-
 const copyToClipboard = async () => {
-  if (!navigator.clipboard) {
-    copyToClipboardFallback(passwordField.value);
-    return;
-  }
-
   if (passwordField.value !== "") {
     passwordField.select();
     passwordField.setSelectionRange(0, 99999);
@@ -206,6 +181,7 @@ const copyToClipboard = async () => {
   setTimeout(() => {
     copyAlert.style.visibility = "hidden";
     copyAlert.style.opacity = "0";
+    location.reload();
   }, 2000);
 };
 
