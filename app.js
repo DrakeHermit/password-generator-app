@@ -9,7 +9,7 @@ const passwordStrengthIndicatorEl = document.getElementById(
   "password-strength-indicator"
 );
 const passwordField = document.getElementById("password");
-const copyButtonEl = document.getElementById("copy-button");
+const copyButtonEl = document.querySelector(".button-container");
 const copyAlert = document.querySelector(".alert");
 
 sliderValueDisplay.innerText = slider.value;
