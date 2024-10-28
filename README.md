@@ -27,30 +27,34 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./assets/images/screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/DrakeHermit/password-generator-app)
+- Live Site URL: [Live Site](https://drakehermit-random-password.netlify.app/)
 
 ## My process
+
+I started building this project by first finishing the markup with HTML and after that I started working on the CSS.
+Since I go with the mobile first approach I started styling the generator to look good on mobile phones first and then I did the desktop version.
+But as I was working on the JS I revisited both HTML and CSS files to add or remove certain parts.
+But the main part of this project was in JS and that took a long time to complete, but nonetheless I learned a lot.
 
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
 
 ### What I learned
 
-
+I learned a ton from working on this project, and this was by far the biggest project JS wise for me. I learned how a sorting algorithm works, I also learned how to slice arrays to a given size based on the required amount of characters.
 
 ### Continued development
 
-
+I will keep on learning JS and improve my skills with both HTML and CSS. But my main focus now will be working with objects and different higher order array methods.
 
 ## Author
 
