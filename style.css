@@ -279,7 +279,6 @@ input[type = 'text']:disabled::placeholder {
 
 .copy-btn {
   cursor: pointer;
-  display: none;
 }
 
 .btn-group {
@@ -295,6 +294,7 @@ input[type = 'text']:disabled::placeholder {
   opacity: 0;
   visibility: none;
   margin-right: 20px;
+  z-index: 100;
   transition: all 0.2s ease-in;
 }
 
@@ -321,10 +321,6 @@ input[type = 'text']:disabled::placeholder {
     grid-template-columns: 94% 1fr;
     width: 540px;
     padding: 1.19rem 2rem;
-  }
-
-  .copy-btn {
-    display: block;
   }
 
   .checkboxes {

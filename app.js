@@ -172,11 +172,18 @@ const copyToClipboard = async () => {
     } catch (error) {
       console.log("There was an error copying the password", error);
     }
-  }
 
-  copyAlert.style.visibility = "visible";
-  copyAlert.style.opacity = "1";
-  passwordField.value = "";
+    copyAlert.style.visibility = "visible";
+    copyAlert.style.opacity = "1";
+    passwordField.value = "";
+  } else {
+    copyAlert.textContent = "Generate password first!";
+    copyAlert.style.visibility = "visible";
+    copyAlert.style.opacity = "1";
+    copyAlert.style.width = "250px";
+    copyAlert.style.fontSize = "16px";
+    copyAlert.style.marginRight = "5px";
+  }
 
   setTimeout(() => {
     copyAlert.style.visibility = "hidden";
